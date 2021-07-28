@@ -1,0 +1,41 @@
+.Navbar {
+  background-color: #faad80;
+  display: flex;
+  justify-content: space-between;
+  min-height: 10vh;
+  box-shadow: 0 6px 20px 0 #a73489;
+}
+
+.Nav-logo {
+  margin-left: 1rem;
+  margin-top: 0.3rem;
+}
+
+.Nav-cont {
+  margin-top: 1.3rem;
+  margin-right: 3rem;
+}
+
+.Navbar-explore {
+  transform: scale(1.5);
+}
+
+.Navbar-panel {
+  transform: scale(1.5);
+}
+
+.Navbar-1 {
+  margin-right: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.Navbar-2 {
+  margin-right: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.Navbar-text {
+  margin: 0rem 1rem 0 0.8rem;
+}

@@ -1,0 +1,14 @@
+.posts{
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+margin: 3rem;
+}
+
+.posts-cont{
+ margin: 0 0 3rem 6rem;
+ box-shadow: 0 4px 8px 0 #A73489, 0 6px 20px 0 #FF3D68;
+ background-color: #FAAD80;
+ border-radius: 3rem;
+ padding: 3rem;
+}

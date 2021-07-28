@@ -1,0 +1,14 @@
+.Footer{
+text-align: center;
+background-color: #FAAD80;
+min-height: 5vh;
+box-shadow: 0 6px 20px 0 #A73489;
+}
+
+.Footer > h2{
+   color: #FF3D68;
+}
+
+.Footer > h2 > a{
+    color: #A73489;
+ }
