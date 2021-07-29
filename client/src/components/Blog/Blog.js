@@ -3,34 +3,38 @@ import "./Blog.css";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
-export default function Blog({ title, author, description, image }) {
-  const [fav, setFav] = React.useState(localStorage.getItem("like") === false);
+export default function Blog({ title, author, description, image, id }) {
+  const liked = "like"+id;
+  const [fav, setFav] = React.useState(JSON.parse(localStorage.getItem(liked)));
+  
   React.useEffect(() => {
-    localStorage.setItem("like", fav);
+    localStorage.setItem(liked, JSON.stringify(fav));
   }, [fav]);
 
   const Like = () => {
     setFav(!fav);
   };
-
+  const commented = "comment"+id;
   const [comment, setComment] = React.useState(
-    localStorage.getItem("comment") === ""
+   JSON.parse(localStorage.getItem(commented))
   );
 
   React.useEffect(() => {
-    localStorage.setItem("comment", comment);
+    localStorage.setItem(commented, JSON.stringify(comment));
+    console.log(comment);
   }, [comment]);
 
   const onChangeHandler = (e) => {
-    setComment(e);
+    setComment(e.target.value);
   };
-
+ 
+  const submitted = "submitted"+id;
   const [submit, setSubmit] = React.useState(
-    localStorage.getItem("submitted") === false
+    JSON.parse(localStorage.getItem(submitted))
   );
 
   React.useEffect(() => {
-    localStorage.setItem("submitted", submit);
+    localStorage.setItem(submitted, JSON.stringify(submit));
   }, [submit]);
 
   const submitHandler = () => {
@@ -54,7 +58,7 @@ export default function Blog({ title, author, description, image }) {
       <div className="blog-cont--4">
         <div className="blog-like">
           <a className="blog-like--btn" onClick={Like}>
-            {fav === false ? (
+            {!fav ? (
               <FavoriteBorderIcon className="blog-like--btn-1" />
             ) : (
               <FavoriteIcon className="blog-like--btn-1" />
@@ -63,19 +67,22 @@ export default function Blog({ title, author, description, image }) {
         </div>
         <div className="blog-comment">
           {/* {submit?<p>Comments:</p>:''} */}
+          {!submit?
           <input
             className={`comment-box ${
-              submit === false ? "not-commented" : "commented"
+              !submit ? "not-commented" : "commented"
             }`}
             placeholder="Leave a comment/review"
             onChange={(e) => onChangeHandler(e)}
-          />
-          {submit === false || comment === "" ? (
-            <a className="submit-btn" onClick={submitHandler}>
+          /> : <h2 className="commented">{comment}</h2>
+          }
+    
+          {!submit || comment ==='' ? (
+            <a className="submit-btn" accessKey="Enter" onClick={submitHandler}>
               <span>Submit</span>{" "}
             </a>
           ) : (
-            ""
+            ''
           )}
         </div>
       </div>
